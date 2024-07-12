@@ -2,6 +2,7 @@ import pytest
 from Utils import utils
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
+from Pages.SignUpPage import SignUpPage
 import time
 
 
@@ -23,3 +24,25 @@ class TestRegisterUser:
         lp.enter_name(utils.NAME)
         lp.enter_email(utils.EMAIL)
         lp.click_signup()
+
+        sp = SignUpPage(driver)
+        sp.select_title()
+        sp.verify_name()
+        sp.verify_email()
+        sp.enter_pass(utils.PASSWORD)
+        sp.select_day_of_birth()
+        sp.select_month_of_birth()
+        sp.select_year_of_birth()
+        sp.click_sign_up_newsletter()
+        sp.click_offers()
+        sp.enter_first_name(utils.NAME)
+        sp.enter_last_name(utils.LASTNAME)
+        sp.enter_company(utils.COMPANY)
+        sp.enter_address(utils.ADDRESS)
+        sp.select_country()
+        sp.enter_city(utils.CITY)
+        sp.enter_state(utils.STATE)
+        sp.enter_zip(utils.ZIP)
+        sp.enter_mobile_phone(utils.MOBILE)
+        sp.click_create_account()
+        time.sleep(5)
