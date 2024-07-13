@@ -1,6 +1,6 @@
 URL = "http://automationexercise.com/"
 NAME = "Olivia"
-EMAIL = "mytestemail@email.com"
+EMAIL = "sandybeach11212@email.com"
 LASTNAME = "Sand"
 COMPANY = "Fake Company"
 ADDRESS = "123 ABC ST"

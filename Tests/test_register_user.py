@@ -3,6 +3,7 @@ from Utils import utils
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.SignUpPage import SignUpPage
+from Pages.AccountCreatedPage import AccountCreatedPage
 import time
 
 
@@ -45,4 +46,11 @@ class TestRegisterUser:
         sp.enter_zip(utils.ZIP)
         sp.enter_mobile_phone(utils.MOBILE)
         sp.click_create_account()
-        time.sleep(5)
+
+        acp = AccountCreatedPage(driver)
+        acp.verify_account_txt()
+        acp.click_continue_btn()
+
+        hp.verify_logged_in()
+        hp.delete_account()
+        hp.verify_account_deletion()
