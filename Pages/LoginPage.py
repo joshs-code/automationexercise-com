@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-
+import pytest
 
 class LoginPage:
 
@@ -12,6 +12,8 @@ class LoginPage:
         self.email_login_field_xpath = '//input[@data-qa="login-email"]'
         self.password_login_field_xpath = '//input[@data-qa="login-password"]'
         self.login_button_xpath = '//button[@type="submit" and @data-qa="login-button"]'
+        self.driver_verify_login_text_xpath = '//h2[contains(text(),"Login to your account")]'
+        self.driver_error_incorrect_email_or_pass_xpath = '//p[contains(text(), "Your email or password is incorrect!")]'
 
     def verify_signup_text(self):
         signup_text = self.driver.find_element(By.XPATH, self.user_title_sign_up_xpath).text
@@ -38,3 +40,11 @@ class LoginPage:
 
     def click_login_button(self):
         self.driver.find_element(By.XPATH, self.login_button_xpath).click()
+
+    def verify_login_into_account_txt(self):
+        login_txt = self.driver.find_element(By.XPATH, self.driver_verify_login_text_xpath).text
+        assert login_txt == "Login to your account"
+
+    def verify_incorrect_error_msg(self):
+        msg = self.driver.find_element(By.XPATH, self.driver_error_incorrect_email_or_pass_xpath).text
+        assert msg == "Your email or password is incorrect!"
